@@ -8,6 +8,7 @@ import io
 df = pd.read_csv('languages.csv', encoding='ISO-8859-1')
 
 app = Dash(__name__)
+server = app.server
 
 app.layout = html.Div(
     [
