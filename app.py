@@ -41,8 +41,6 @@ app.layout = html.Div(
     Input("values", "value"),
 )
 def generate_charts(values):
-    fig_pie = px.pie(df, values=values, names="title", hole=0.3)
-
     label_mapping = {
         "number_of_users": "Number of Users",
         "wikipedia_daily_page_views": "Wikipedia Page Views",
@@ -51,6 +49,8 @@ def generate_charts(values):
         "github_language_repos": "Github Languages Repositories",
     }
     x_label = label_mapping.get(values, "Default Label")
+    
+    fig_pie = px.pie(df, values=values, names="title", labels={"title": "Language", values: x_label}, hole=0.3)
     
     dff = df[df[values] > 0].sort_values(by=values, ascending=True).head(10)
     fig_bar = px.bar(dff, x=values, y="title", labels={"title": "Language", values: x_label},)
