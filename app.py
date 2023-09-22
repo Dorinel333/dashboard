@@ -12,8 +12,8 @@ server = app.server
 
 app.layout = html.Div(
     [
-        html.H4("Programming Languages"),
-        html.P("Properties:"),
+        html.H1("Programming Languages", style={'textAlign': 'center'}),
+        html.P("Properties:", style={'font-weight': 'bold'}),
         dcc.Dropdown(
             id="values",
             options=[
